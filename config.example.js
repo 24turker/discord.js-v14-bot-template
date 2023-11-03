@@ -1,5 +1,6 @@
 module.exports = {
   General: {
+    BotName: "",
     BotToken: "",
     BotID: "",
   },

@@ -23,19 +23,32 @@ npm install
 npm run start
 ```
 
+## 💫 Log Usage
+  
+  ```js
+  const logger = require("../functions/logger.js");
+
+  logger.error({ type: 'Error', message: 'Error message' });
+  logger.success({ type: 'Success', message: 'Success message' });
+  logger.warn({ type: 'Warn', message: 'Warn message' });
+  logger.info({ type: 'Info', message: 'Info message' });
+  logger.debug({ type: 'Debug', message: 'Debug message' });
+  ```
+
 ## 👻 Contributing
 
 Pull Requests are always welcome, just edit the part you want to contribute and create a new PR. I will check it when I have time and update the parts that need to be changed.
 
 ## License
 
-[ISC](https://choosealicense.com/licenses/isc/) © [turkwr](https://github.com/turkwr) [`(go to LICENSE file)`](LICENSE)
+[ISC](https://choosealicense.com/licenses/isc/) © [turkwr](https://github.com/turkwr)
 
 ## 👀 Example config.js file
 
 ```js
 module.exports = {
   General: {
+    BotName: "", // Discord bot name
     BotToken: "", // Discord bot token
     BotID: "", // Discord bot ID
   },
@@ -51,3 +64,9 @@ module.exports = {
 - Node.js: v16.6.1 or higher
 - Discord.js: v14.10.0 or higher
 - Chalk: v4.0.0 or v4.1.2
+
+## 📝 To-Do
+[x] Add custom logger
+[] Add Mongoose connection
+[] Add language system
+[] Add permissions system
