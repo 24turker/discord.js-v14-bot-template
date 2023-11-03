@@ -1,10 +1,10 @@
 module.exports = {
-    General: {
-        BotToken: "",
-        BotID: "",
-    },
+  General: {
+    BotToken: "",
+    BotID: "",
+  },
 
-    Presence: {
-        Activity: "",
-    }
-}
+  Presence: {
+    Activity: "",
+  },
+};
