@@ -1,0 +1,17 @@
+{
+  "name": "discord.js-v14-template-bot",
+  "version": "0.0.1",
+  "description": "Discord.js sample bot ✨",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js",
+    "format": "prettier --write ."
+  },
+  "author": "turkwr",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "discord.js": "^14.13.0"
+  }
+}
