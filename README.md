@@ -29,7 +29,7 @@ Pull Requests are always welcome, just edit the part you want to contribute and 
 
 ## License
 
-[ISC](https://choosealicense.com/licenses/isc/) © [turkwr](https://github.com/turkwr) [go to LICENSE file](LICENSE)
+[ISC](https://choosealicense.com/licenses/isc/) © [turkwr](https://github.com/turkwr) [`(go to LICENSE file)`](LICENSE)
 
 ## 👀 Example config.js file
 
