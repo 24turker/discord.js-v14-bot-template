@@ -64,9 +64,3 @@ module.exports = {
 - Node.js: v16.6.1 or higher
 - Discord.js: v14.10.0 or higher
 - Chalk: v4.0.0 or v4.1.2
-
-## 📝 To-Do
-[x] Add custom logger
-[] Add Mongoose connection
-[] Add language system
-[] Add permissions system
