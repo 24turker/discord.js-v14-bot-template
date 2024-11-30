@@ -8,11 +8,11 @@
     "dev": "nodemon ./src/index.js",
     "format": "prettier --write . "
   },
-  "author": "turkwr",
+  "author": "@turkerssh",
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.2",
-    "discord.js": "^14.13.0",
+    "discord.js": "^14.16.3",
     "figlet": "^1.7.0"
   }
 }
