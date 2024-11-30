@@ -1,3 +1,5 @@
+> I stopped developing this project, I will write it again in more detail from the beginning.
+
 # ✨ Discord.js v14 Template
 
 A template for discord.js v14 bots.
