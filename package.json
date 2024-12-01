@@ -1,18 +1,20 @@
 {
-  "name": "discord.js-v14-template-bot",
-  "version": "0.0.1",
-  "description": "Discord.js sample bot ✨",
-  "main": "./src/index.js",
+  "name": "@turkerssh/discord.js-v14-template-bot",
+  "version": "2.0.0",
+  "description": "🍃 Advanced discord.js empty bot template",
+  "main": "start.js",
   "scripts": {
-    "start": "node ./src/index.js",
-    "dev": "nodemon ./src/index.js",
-    "format": "prettier --write . "
+    "start": "node start.js",
+    "format": "prettier --write ."
   },
-  "author": "@turkerssh",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/turkerssh/discord.js-v14-template-bot"
+  },
   "dependencies": {
-    "chalk": "^4.1.2",
+    "@turkerssh/logger": "^0.0.2",
     "discord.js": "^14.16.3",
-    "figlet": "^1.7.0"
+    "figlet": "^1.8.0",
+    "fs": "^0.0.1-security"
   }
 }

@@ -1,20 +1,21 @@
-const logger = require("../functions/logger");
-const config = require("../../config.js");
-const { ActivityType } = require("discord.js");
+const { ActivityType, EmbedBuilder } = require("discord.js");
 
-module.exports = {
-  name: "ready",
-  once: true,
-  execute(client) {
-    logger.success({
-      type: "Bot",
-      message: `Logged in as ${client.user.tag}!`,
-    });
-    client.user.setPresence({
-      activities: [
-        { name: config.Presence.Activity, type: ActivityType.Custom },
-      ],
-      status: "dnd",
-    });
-  },
+const logger = require("@turkerssh/logger");
+const config = require("../../config");
+
+module.exports = (client) => {
+  client.user.setPresence({
+    activities: [
+      {
+        name: config.PresenceInformation.ActivityState,
+        type: ActivityType.Custom,
+      },
+    ],
+    status: "idle",
+  });
+
+  logger.success({
+    type: "client",
+    message: `${client.user.tag} is ready!`,
+  });
 };

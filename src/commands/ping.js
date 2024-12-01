@@ -4,17 +4,11 @@ const { EmbedBuilder } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("ping")
-    .setDescription("Pong!"),
-
+    .setDescription("Check bot ping."),
   async execute(interaction) {
     const embed = new EmbedBuilder()
-      .setTitle("Pong!")
-      .setDescription(
-        `Latency is ${
-          Date.now() - interaction.createdTimestamp
-        }ms. API Latency is ${Math.round(interaction.client.ws.ping)}ms`,
-      )
-      .setColor("Random");
+      .setDescription(`🏓 Pong! **${interaction.client.ws.ping}ms**.`)
+      .setColor("#13131B");
     await interaction.reply({ embeds: [embed] });
   },
 };

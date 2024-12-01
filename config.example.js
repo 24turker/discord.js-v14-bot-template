@@ -1,11 +1,15 @@
 module.exports = {
-  General: {
-    BotName: "",
-    BotToken: "",
-    BotID: "",
+  GeneralInformation: {
+    BotName: "BOT_NAME",
+    BotToken: "BOT_TOKEN",
+    BotId: "BOT_ID",
   },
 
-  Presence: {
-    Activity: "",
+  PresenceInformation: {
+    ActivityState: "BOT_ACTIVITY_TEXT",
+  },
+
+  WebhookInformation: {
+    ShardWebhook: "SHARD_WEBHOOK_URL",
   },
 };

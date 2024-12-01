@@ -1,95 +1,56 @@
-const { readdirSync } = require("node:fs");
-const config = require("../config.js");
-const logger = require("./functions/logger.js");
+const logger = require("@turkerssh/logger");
+const {
+  Client,
+  GatewayIntentBits,
+  Partials,
+  Collection,
+} = require("discord.js");
 
-const { Client, Collection } = require("discord.js");
+const config = require("../config");
 
 const client = new Client({
-  intents: 32767,
-  allowedMentions: { parse: ["users"], repliedUser: true },
+  intents: [Object.keys(GatewayIntentBits)],
+  partials: [Object.keys(Partials)],
+  allowedMentions: {
+    parse: ["users", "roles"],
+    repliedUser: true,
+  },
 });
 
+client.interaction = new Collection();
 client.commands = new Collection();
+client.cooldowns = new Collection();
+client.shards = new Collection();
 
-// Commands
-const commandFiles = readdirSync("./src/commands").filter((file) =>
-  file.endsWith(".js"),
-);
-if (commandFiles.length > 0)
-  logger.info({
-    type: "Commands",
-    message: `Found ${commandFiles.length.toString()} commands`,
-  });
-else logger.error({ type: "Commands", message: "No commands found" });
-
-const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
-
-const commands = [];
-
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
-  commands.push(command.data.toJSON());
-  client.commands.set(command.data.name, command);
-}
-
-const rest = new REST({ version: "9" }).setToken(config.General.BotToken);
-
-(async () => {
-  try {
-    logger.debug({
-      type: "Commands",
-      message: "Started refreshing application (/) commands.",
-    });
-
-    await rest.put(Routes.applicationCommands(config.General.BotID), {
-      body: commands,
-    });
-
-    logger.success({
-      type: "Commands",
-      message: "Successfully reloaded application (/) commands.",
-    });
-  } catch (error) {
-    logger.error({ type: "Commands", message: error });
-  }
-})();
-
-// Events
-const eventFiles = readdirSync("./src/events").filter((file) =>
-  file.endsWith(".js"),
-);
-if (eventFiles.length > 0)
-  logger.info({
-    type: "Events",
-    message: `Found ${eventFiles.length.toString()} events`,
-  });
-else logger.error({ type: "Events", message: "No events found" });
-
-for (const file of eventFiles) {
-  const event = require(`./events/${file}`);
-  if (event.once)
-    client.once(event.name, (...args) => event.execute(...args, client));
-  else client.on(event.name, (...args) => event.execute(...args, client));
-}
-
-// Login
-client
-  .login(config.General.BotToken)
-  .then()
-  .catch((err) => {
-    logger.error({ type: "Login", message: err });
-  });
-
-// Process events
-process.on("unhandledRejection", (error) => {
-  logger.error({ type: "Unhandled Rejection", message: error });
+["events", "commands"].filter(Boolean).forEach((h) => {
+  require(`./handlers/${h}`)(client);
 });
 
-process.on("uncaughtException", (error) => {
-  logger.error({ type: "Uncaught Exception", message: error });
+process.on("unhandledRejection", (err) => {
+  logger.error({
+    type: "client",
+    message: err,
+  });
+});
+
+process.on("uncaughtException", (err) => {
+  logger.error({
+    type: "client",
+    message: err,
+  });
 });
 
 process.on("warning", (warning) => {
-  logger.warn({ type: "Warning", message: warning });
+  logger.warn({
+    type: "client",
+    message: warning,
+  });
+});
+
+client.login(config.GeneralInformation.BotToken).catch((err) => {
+  logger.error({
+    type: "client",
+    message: "Error while logging in",
+  });
+  console.dir(err);
 });
